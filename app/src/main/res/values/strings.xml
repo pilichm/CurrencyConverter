@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">CurrencyConverter</string>
+    <string name="edit_text_amount_default_value">0,00</string>
+
+    <!-- Flag image content description -->
+    <string name="image_content_description_poland">Poland</string>
+    <string name="image_content_description_eu">European Union</string>
+    <string name="image_content_description_usa">USA</string>
+    <string name="image_content_description_japan">Japan</string>
+
+    <string name="image_content_description_money">Money</string>
+
+    <!-- Currencies -->
+    <string name="currency_poland">(PLN)</string>
+    <string name="currency_eu">(EUR)</string>
+    <string name="currency_usa">(USD)</string>
+    <string name="currency_japan">(JPY)</string>
+    <string name="from">From</string>
+    <string name="to">To</string>
+
 </resources>
