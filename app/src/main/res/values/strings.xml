@@ -18,4 +18,8 @@
     <string name="from">From</string>
     <string name="to">To</string>
 
+    <!-- Toast messages for user -->
+    <string name="empty_from_or_to_currency">From or to currency is empty!</string>
+    <string name="from_and_to_currencies_are_the_same">To and from currencies are the same!</string>
+
 </resources>
