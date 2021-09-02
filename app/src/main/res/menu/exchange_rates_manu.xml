@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        app:showAsAction="ifRoom"
+        android:id="@+id/ic_refresh_exchange_rates_detail"
+        android:icon="@drawable/ic_refresh_exchange_rates"
+        android:title="@string/refresh_exchange_rates" />
+    <item
+        android:id="@+id/menu_main"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_flag"
+        android:title="">
+        <menu>
+            <item
+                android:id="@+id/menu_poland"
+                android:title="@string/image_content_description_poland"/>
+            <item
+                android:id="@+id/menu_european_union"
+                android:title="@string/image_content_description_eu"/>
+            <item
+                android:id="@+id/menu_united_states"
+                android:title="@string/image_content_description_usa"/>
+            <item
+                android:id="@+id/menu_japan"
+                android:title="@string/image_content_description_japan"/>
+        </menu>
+    </item>
+</menu>

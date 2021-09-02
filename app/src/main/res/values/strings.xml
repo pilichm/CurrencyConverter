@@ -21,5 +21,7 @@
     <!-- Toast messages for user -->
     <string name="empty_from_or_to_currency">From or to currency is empty!</string>
     <string name="from_and_to_currencies_are_the_same">To and from currencies are the same!</string>
+    <string name="refresh_exchange_rates">Refresh Exchange Rates</string>
+    <string name="change_currency">Change Currency</string>
 
 </resources>
