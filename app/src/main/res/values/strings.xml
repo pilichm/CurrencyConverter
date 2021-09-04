@@ -23,5 +23,6 @@
     <string name="from_and_to_currencies_are_the_same">To and from currencies are the same!</string>
     <string name="refresh_exchange_rates">Refresh Exchange Rates</string>
     <string name="change_currency">Change Currency</string>
+    <string name="mock_exchange_rate">1.111</string>
 
 </resources>

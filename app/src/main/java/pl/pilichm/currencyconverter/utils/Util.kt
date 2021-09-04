@@ -9,7 +9,7 @@ class Util {
                         CountryEnum.POLAND -> 4.5503
                         CountryEnum.USA -> 1.18
                         CountryEnum.JAPAN -> 129.64
-                        else -> 0.0
+                        else -> 1.0
                     }
                 }
                 CountryEnum.POLAND -> {
@@ -17,7 +17,7 @@ class Util {
                         CountryEnum.EU -> 0.22
                         CountryEnum.USA -> 0.26
                         CountryEnum.JAPAN -> 28.42
-                        else -> 0.0
+                        else -> 1.0
                     }
                 }
                 CountryEnum.USA -> {
@@ -25,7 +25,7 @@ class Util {
                         CountryEnum.POLAND -> 3.87
                         CountryEnum.EU -> 0.85
                         CountryEnum.JAPAN -> 109.91
-                        else -> 0.0
+                        else -> 1.0
                     }
                 }
                 CountryEnum.JAPAN -> {
@@ -33,10 +33,30 @@ class Util {
                         CountryEnum.POLAND -> 0.04
                         CountryEnum.EU -> 0.0077
                         CountryEnum.USA -> 0.0091
-                        else -> 0.0
+                        else -> 1.0
                     }
                 }
-                else -> return 0.0
+                else -> return 1.0
+            }
+        }
+
+        fun getEnumFromCurrency(currencyName: String): CountryEnum {
+            return when(currencyName){
+                "PLN" -> CountryEnum.POLAND
+                "JPY" -> CountryEnum.JAPAN
+                "USD" -> CountryEnum.USA
+                "EUR" -> CountryEnum.EU
+                else -> CountryEnum.NONE
+            }
+        }
+
+        fun getNameFromCountryEnum(country: CountryEnum): String {
+            return when(country){
+                CountryEnum.POLAND -> "PLN"
+                CountryEnum.JAPAN -> "JPY"
+                CountryEnum.USA -> "USD"
+                CountryEnum.EU -> "EUR"
+                else -> "None"
             }
         }
     }
