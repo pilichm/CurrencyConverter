@@ -17,7 +17,8 @@ Used technologies:
 - custom menu,
 - java url request for downloading exchange rates,
 - gson,
-- listview with custom adapter for displaying calculated exchange rates.
+- listview with custom adapter for displaying calculated exchange rates,
+- view binding for finding views in layouts.
 
 App Screenshots
 -
