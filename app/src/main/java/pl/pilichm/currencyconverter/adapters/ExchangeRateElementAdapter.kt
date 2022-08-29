@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import kotlinx.android.synthetic.main.currency_exchenge_item.view.*
+import android.widget.TextView
 import pl.pilichm.currencyconverter.R
 import pl.pilichm.currencyconverter.utils.CurrencyRate
 
@@ -25,8 +25,11 @@ class ExchangeRateElementAdapter(context: Context, elements: ArrayList<CurrencyR
             ?: LayoutInflater.from(context)
                 .inflate(R.layout.currency_exchenge_item, parent, false)
 
-        nView.elementExchangeRate?.text = element?.exchangeRate.toString()
-        nView.elementToCurrency?.text = "${element?.name.toString()} = "
+        val exchangeRate = nView.findViewById(R.id.elementExchangeRate) as TextView
+        val elementToCurrency= nView.findViewById(R.id.elementToCurrency) as TextView
+
+        exchangeRate.text = element?.exchangeRate.toString()
+        elementToCurrency.text = "${element?.name.toString()} = "
         Log.i("Element", "ADDED")
 
         return nView

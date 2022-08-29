@@ -11,8 +11,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.google.gson.Gson
-import kotlinx.android.synthetic.main.activity_main.*
 import pl.pilichm.currencyconverter.R
+import pl.pilichm.currencyconverter.databinding.ActivityMainBinding
 import pl.pilichm.currencyconverter.utils.*
 import java.io.InputStream
 import java.io.InputStreamReader
@@ -21,12 +21,14 @@ import java.net.URL
 
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
+    private lateinit var binding: ActivityMainBinding
     private var fromCountry: CountryEnum = CountryEnum.NONE
     private var toCountry: CountryEnum = CountryEnum.NONE
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         setUpListeners()
         setUpActionBar()
@@ -53,7 +55,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun setUpActionBar(){
-        setSupportActionBar(toolbar_act_main)
+        setSupportActionBar(binding.toolbarActMain)
     }
 
     private fun getExchangeRatesData(){
@@ -105,37 +107,37 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun setUpListeners(){
-        cvPolandLeft.setOnClickListener(this)
-        cvEULeft.setOnClickListener(this)
-        cvUSALeft.setOnClickListener(this)
-        cvJapanLeft.setOnClickListener(this)
+        binding.cvPolandLeft.setOnClickListener(this)
+        binding.cvEULeft.setOnClickListener(this)
+        binding.cvUSALeft.setOnClickListener(this)
+        binding.cvJapanLeft.setOnClickListener(this)
 
-        cvPolandRight.setOnClickListener(this)
-        cvEURight.setOnClickListener(this)
-        cvUSARight.setOnClickListener(this)
-        cvJapanRight.setOnClickListener(this)
+        binding.cvPolandRight.setOnClickListener(this)
+        binding.cvEURight.setOnClickListener(this)
+        binding.cvUSARight.setOnClickListener(this)
+        binding.cvJapanRight.setOnClickListener(this)
 
-        buttonConvert.setOnClickListener(this)
+        binding.buttonConvert.setOnClickListener(this)
     }
 
     private fun resetLeftButtonColors(){
         fromCountry = CountryEnum.NONE
         val defaultColor = ContextCompat.getColor(this, R.color.card_view_background)
 
-        cvPolandLeft.setBackgroundColor(defaultColor)
-        cvEULeft.setBackgroundColor(defaultColor)
-        cvUSALeft.setBackgroundColor(defaultColor)
-        cvJapanLeft.setBackgroundColor(defaultColor)
+        binding.cvPolandLeft.setBackgroundColor(defaultColor)
+        binding.cvEULeft.setBackgroundColor(defaultColor)
+        binding.cvUSALeft.setBackgroundColor(defaultColor)
+        binding.cvJapanLeft.setBackgroundColor(defaultColor)
     }
 
     private fun resetRightButtonColors(){
         toCountry = CountryEnum.NONE
         val defaultColor = ContextCompat.getColor(this, R.color.card_view_background)
 
-        cvPolandRight.setBackgroundColor(defaultColor)
-        cvEURight.setBackgroundColor(defaultColor)
-        cvUSARight.setBackgroundColor(defaultColor)
-        cvJapanRight.setBackgroundColor(defaultColor)
+        binding.cvPolandRight.setBackgroundColor(defaultColor)
+        binding.cvEURight.setBackgroundColor(defaultColor)
+        binding.cvUSARight.setBackgroundColor(defaultColor)
+        binding.cvJapanRight.setBackgroundColor(defaultColor)
     }
 
     override fun onClick(view: View?) {
@@ -147,14 +149,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     goToExchangeRatesForOneCurrency("PLN")
                 resetLeftButtonColors()
                 fromCountry = CountryEnum.POLAND
-                cvPolandLeft.setBackgroundColor(selectedCol)
+                binding.cvPolandLeft.setBackgroundColor(selectedCol)
             }
             R.id.cvEULeft -> {
                 if (fromCountry==CountryEnum.EU)
                     goToExchangeRatesForOneCurrency("EUR")
                 resetLeftButtonColors()
                 fromCountry = CountryEnum.EU
-                cvEULeft.setBackgroundColor(selectedCol)
+                binding.cvEULeft.setBackgroundColor(selectedCol)
             }
             R.id.cvUSALeft -> {
                 if (fromCountry==CountryEnum.USA){
@@ -162,7 +164,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 }
                 resetLeftButtonColors()
                 fromCountry = CountryEnum.USA
-                cvUSALeft.setBackgroundColor(selectedCol)
+                binding.cvUSALeft.setBackgroundColor(selectedCol)
             }
             R.id.cvJapanLeft -> {
                 if (fromCountry==CountryEnum.JAPAN){
@@ -170,7 +172,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 }
                 resetLeftButtonColors()
                 fromCountry = CountryEnum.JAPAN
-                cvJapanLeft.setBackgroundColor(selectedCol)
+                binding.cvJapanLeft.setBackgroundColor(selectedCol)
             }
             /* To currencies. */
             R.id.cvPolandRight -> {
@@ -179,7 +181,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 }
                 resetRightButtonColors()
                 toCountry = CountryEnum.POLAND
-                cvPolandRight.setBackgroundColor(selectedCol)
+                binding.cvPolandRight.setBackgroundColor(selectedCol)
             }
             R.id.cvEURight -> {
                 if (toCountry==CountryEnum.EU){
@@ -187,7 +189,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 }
                 resetRightButtonColors()
                 toCountry = CountryEnum.EU
-                cvEURight.setBackgroundColor(selectedCol)
+                binding.cvEURight.setBackgroundColor(selectedCol)
             }
             R.id.cvUSARight -> {
                 if (toCountry==CountryEnum.USA){
@@ -195,7 +197,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 }
                 resetRightButtonColors()
                 toCountry = CountryEnum.USA
-                cvUSARight.setBackgroundColor(selectedCol)
+                binding.cvUSARight.setBackgroundColor(selectedCol)
             }
             R.id.cvJapanRight -> {
                 if (toCountry==CountryEnum.JAPAN){
@@ -203,7 +205,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 }
                 resetRightButtonColors()
                 toCountry = CountryEnum.JAPAN
-                cvJapanRight.setBackgroundColor(selectedCol)
+                binding.cvJapanRight.setBackgroundColor(selectedCol)
             }
             /* Convert button. */
             R.id.buttonConvert -> {
@@ -214,10 +216,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     val message = resources.getString(R.string.from_and_to_currencies_are_the_same)
                     Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
                 } else {
-                    val amount = etAmount.text.toString().toDouble()
+                    val amount = binding.etAmount.text.toString().toDouble()
                     val calculatedAmount
                         = amount * Util.getMockFromToMultiplier(fromCountry, toCountry)
-                    etAmount.setText("%.2f".format(calculatedAmount))
+                    binding.etAmount.setText("%.2f".format(calculatedAmount))
                 }
             }
         }

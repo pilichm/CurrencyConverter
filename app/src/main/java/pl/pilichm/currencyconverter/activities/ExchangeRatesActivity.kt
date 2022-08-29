@@ -6,32 +6,34 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_exchange_rates_acivity.*
 import pl.pilichm.currencyconverter.R
 import pl.pilichm.currencyconverter.adapters.ExchangeRateElementAdapter
 import pl.pilichm.currencyconverter.utils.Constants
 import pl.pilichm.currencyconverter.utils.CountryEnum
 import pl.pilichm.currencyconverter.utils.CurrencyRate
 import pl.pilichm.currencyconverter.utils.Util
+import pl.pilichm.currencyconverter.databinding.ActivityExchangeRatesAcivityBinding
 
 class ExchangeRatesActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityExchangeRatesAcivityBinding
     private var mListViewAdapter: ExchangeRateElementAdapter? = null
     private var mElements: ArrayList<CurrencyRate>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_exchange_rates_acivity)
+        binding = ActivityExchangeRatesAcivityBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         if (intent.hasExtra(Constants.PASSED_CURRENCY)) {
             val passedCurrency = intent.getStringExtra(Constants.PASSED_CURRENCY)
 
             Log.i("passedCurrency", "$passedCurrency")
 
-            tvExchangeListHeader.text = "Exchange rates for currency $passedCurrency:"
+            binding.tvExchangeListHeader.text = "Exchange rates for currency $passedCurrency:"
             mElements = getCurrenciesListForCountry(passedCurrency!!)
             mListViewAdapter = ExchangeRateElementAdapter(this, mElements!!)
             mListViewAdapter!!.setBaseCurrency(passedCurrency)
-            listViewExchangeRates.adapter = mListViewAdapter
+            binding.listViewExchangeRates.adapter = mListViewAdapter
         }
 
         setUpActionBar()
@@ -71,7 +73,7 @@ class ExchangeRatesActivity : AppCompatActivity() {
             else -> return super.onOptionsItemSelected(item)
         }
 
-        tvExchangeListHeader.text = "Exchange rates for currency $currencyName:"
+        binding.tvExchangeListHeader.text = "Exchange rates for currency $currencyName:"
         mListViewAdapter?.clear()
         mListViewAdapter?.addAll(mElements!!)
         mListViewAdapter?.notifyDataSetChanged()
@@ -79,7 +81,7 @@ class ExchangeRatesActivity : AppCompatActivity() {
     }
 
     private fun setUpActionBar(){
-        setSupportActionBar(toolbar_exc_rates_act)
+        setSupportActionBar(binding.toolbarExcRatesAct)
     }
 
     private fun getCurrenciesListForCountry(country: String): ArrayList<CurrencyRate>{
